@@ -3,6 +3,7 @@
     <head>
         <title>Build New Recipe!</title>
         <link rel="stylesheet" href="style.css" media="screen">
+        <script src="action.js"></script>
     </head>
     <body>
         <h2>Build your recipe!</h2>
@@ -16,7 +17,7 @@
         <div class="column">
             <input type="text" placeholder="Search..">
             <button type="button">Filter</button>
-            <button type="button">Add new ingredient</button>
+            <button id="newIng" type="button">Add new ingredient</button>
             <ul>
                 <li> Onion (vegetable)</li>
                 <li> Potatoes (vegetable)</l2>
@@ -24,6 +25,17 @@
                 <li> [Ingredients will be dynamically read from table]</l3>
             </ul>
         </div>
+
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Some text in the Modal..</p>
+            </div>
+          
+        </div>
+
         <div class="column">
             <div>
                 <p>Name: </p>
