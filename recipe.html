@@ -18,12 +18,34 @@
             <input type="text" placeholder="Search..">
             <button type="button">Filter</button>
             <button id="newIng" type="button">Add new ingredient</button>
-            <ul>
-                <li> Onion (vegetable)</li>
-                <li> Potatoes (vegetable)</l2>
-                <li> Apples (fruit)</l3>
-                <li> [Ingredients will be dynamically read from table]</l3>
-            </ul>
+            <div>
+                <table id="ingTable" style="width:80%">
+                    <tr>
+                      <th>ID</th>
+                      <th>Ingredient Name</th>
+                      <th>Type</th>
+                      <th>Click to Add!</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Onion</td>
+                      <td>Vegetable</td>
+                      <td><button>Add!</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Potatoes</td>
+                        <td>Vegetable</td>
+                        <td><button>Add!</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Apples</td>
+                        <td>Fruit</td>
+                        <td><button>Add!</button></td>
+                    </tr>
+                  </table> 
+            </div>
         </div>
 
         <div id="myModal" class="modal">
@@ -43,7 +65,18 @@
             </div>
             <div>
                 <p>Genre: </p>
-                <input type="text" placeholder="genre of dish">
+                <select name="genres" id="genres">
+                    <optgroup label="Recipe Genre">
+                      <option value="Italian">Italian</option>
+                      <option value="American">American</option>
+                      <option value="Chinese">Chinese</option>
+                      <option value="French">French</option>
+                      <option value="Indian">Indian</option>
+                      <option value="Thai">Thai</option>
+                      <option value="Moroccan">Moroccan</option>
+                      <option value="Mexican">Mexican</option>
+                    </optgroup>
+                  </select>
             </div>
             <div>
                 <p>Instructions: </p>
@@ -54,10 +87,22 @@
                 <input type="text" placeholder="cook time">
             </div>
             <p>Ingredients Added: </p>
-            <ul>
-                <li> Potatoes</l2>
-                <li> Onions</l3>
-            </ul>
+            <div>
+                <table id="addedIngTable" style="width:30%">
+                    <tr>
+                      <th>ID</th>
+                      <th>Ingredient Name</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Onion</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Potatoes</td>
+                    </tr>
+                  </table> 
+            </div>
             <a href="Cookbook.HTML"><button type="button">Save New Recipe</button></a>
         </div>
 
