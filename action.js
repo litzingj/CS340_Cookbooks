@@ -11,6 +11,8 @@ console.log(modal)
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 
+
+//get the add new ingredient button
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
@@ -26,4 +28,6 @@ window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
-} 
+
+
+}
