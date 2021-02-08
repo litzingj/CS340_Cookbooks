@@ -1,7 +1,7 @@
 <html>
     <head>
 
-        <title>Build your Cookbook!</title>
+        <title>Edit Recipe Genres!</title>
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     </head>
@@ -13,7 +13,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <h2>View your Cookbook!</h2>
+                <h2>Your Genres:</h2>
             </div>
             <div class="row justify-content-left">
                 <div>
@@ -25,45 +25,62 @@
                     </a>
                 </div>
                 <div class="justify-content-start">
-                    <p> Description: On this page users will be able to create recipes and save them to their cookbooks</p>
+                    <p> Description: On this page users will be able to add, edit, and delete genres that can be added to recipes</p>
                 </div>
             </div>
 
         <div>
             <div class="justify-content-left">
-                <a href="./recipe.html" role="button"  class="btn btn-outline-primary" id="addRecipeButton">Add Recipe</a>
-                <a role="button" href="recipe.html" class="btn btn-outline-primary" id="editRecipeButton">Edit Recipe</a>
-                <a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="deleteRecipeButton">Delete Recipe </a>
+                <a href="genre.html" role="button"  class="btn btn-outline-primary" id="addGenreButton">Add Genre</a>
+                <a role="button" href="genre.html" class="btn btn-outline-primary" id="editGenreButton">Edit Genre</a>
+                <a role="button" href="genre.html" class="btn btn-outline-primary" id="deleteGenreButton">Delete Genre</a>
                 <a role="button" href="index.html"  class="btn btn-outline-primary" id="homeButton">Home </a>
-                <a role="button" href="genre.html" class="btn btn-outline-primary" id="updateGenresButton">Update Genres</a>
             </div>
             <div>
             <table id="cookbookTable" class="table table-striped"  style="width:80%">
                 <tr>
                   <th>ID</th>
-                  <th>Recipe Name</th>
-                  <th>Genre</th>
-                  <th>Ingredients</th>
-                  <th>Instructions</th>
-                  <th>Cook Time</th>
+                  <th>Genre Name</th>
                 </tr>
                 <tr>
                   <td>1</td>
-                  <td>Crepes</td>
-                  <td>French</td>
-                  <td>Flour, eggs, milk, water, salt, butter </td>
-                  <td>Make the batter and cook in thin layers on a griddle 2 mins per side</td>
-                  <td>30</td>
+                  <td>Italian</td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>Garlic Bread</td>
-                    <td>Italian</td>
-                    <td>Bread, butter, garlic, salt, parsely, oregano, parmesan cheese</td>
-                    <td>Cover bread with butter and herbs and broil for 5 mins</td>
-                    <td>15</td>
+                    <td>American</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Chinese</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>French</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Indian</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Thai</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Moroccan</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Mexican</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>None of the above</td>
                 </tr>
               </table>
+              <a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="backToCookbookButton">Back to Cookbook</a>
+
               </div>
         </div>
     </body>
