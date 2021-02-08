@@ -25,7 +25,7 @@ h2 {
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  
+
   /* Modal Content/Box */
   .modal-content {
     background-color: #fefefe;
@@ -34,7 +34,7 @@ h2 {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
   }
-  
+
   /* The Close Button */
   .close {
     color: #aaa;
@@ -42,13 +42,13 @@ h2 {
     font-size: 28px;
     font-weight: bold;
   }
-  
+
   .close:hover,
   .close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
-  } 
+  }
 
   table, td {
     border: 1px solid black;
@@ -60,3 +60,12 @@ h2 {
     background-color: rgb(192, 192, 192);
     border: 1px solid black;
   }
+  .button {
+    background-color: #4CAF50;
+    border:none;
+    color:white;
+    padding: 15px 32px;
+    font-size:16px;
+
+  }
+
