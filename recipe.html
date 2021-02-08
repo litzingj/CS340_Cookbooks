@@ -28,16 +28,18 @@
         <div class="container">
         <div class="row justify-content-center">
          <div class="col-5">
-            <input type="text" placeholder="Search..">
+            <input type="text" style="width:300px" placeholder="Search for ingredient...">
             <button class ="btn btn-outline-primary"type="button">Filter</button>
-            <button id="newIng" class ="btn btn-outline-primary"type="button">Add new ingredient</button>
+            <input type="text" style="width:140px" placeholder="Ingredient name...">
+            <input type="text" style="width:155px" placeholder="Type of ingredient...">
+            <button id="newIng" class ="btn btn-outline-primary" style="width:63px" type="button">Add</button>
             <div>
                 <table id="ingTable" class= "table table-striped style="width:80%">
                     <tr>
                       <th>ID</th>
                       <th>Ingredient Name</th>
                       <th>Type</th>
-                      <th>Click to Add!</th>
+                      <th>Add to recipe!</th>
                     </tr>
                     <tr>
                       <td>1</td>
@@ -72,36 +74,84 @@
         </div>
 
         <div class="col-5">
-            <div>
-                <label class="form-label"> Name: </label>
-                <input type="text" placeholder="name of dish">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <label class="form-label"> Name: </label>
+                            <input type="text" style="width:200px" placeholder="name of dish">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label class="form-label"> Genre: </label>
-                <select name="genres" class="form-select"  id="genres">
-                    <optgroup label="Recipe Genre">
-                      <option value="Italian">Italian</option>
-                      <option value="American">American</option>
-                      <option value="Chinese">Chinese</option>
-                      <option value="French">French</option>
-                      <option value="Indian">Indian</option>
-                      <option value="Thai">Thai</option>
-                      <option value="Moroccan">Moroccan</option>
-                      <option value="Mexican">Mexican</option>
-                    </optgroup>
-                  </select>
+
+
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div>
+                            <label class="form-label"> Genre: </label>
+                            <select name="genres" class="form-select" style="width:200px" id="genres">
+                                <optgroup label="Recipe Genre">
+                                    <option value="Italian">Italian</option>
+                                    <option value="American">American</option>
+                                    <option value="Chinese">Chinese</option>
+                                    <option value="French">French</option>
+                                    <option value="Indian">Indian</option>
+                                    <option value="Thai">Thai</option>
+                                    <option value="Moroccan">Moroccan</option>
+                                    <option value="Mexican">Mexican</option>
+                                    <option value="nullable">None of the above</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label class="form-label" >Instructions: </label>
-                <input type="text" placeholder="instructions">
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <label class="form-label" >Instructions: </label>
+                            <input type="text" style="width:157px" placeholder="instructions">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label class="form-label" >Cook Time: </label>
-                <input type="text" placeholder="cook time">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div>
+                            <label class="form-label" >Cook Time: </label>
+                            <input type="text" style="width:166px" placeholder="cook time">
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p>Ingredients Added: </p>
+    <!--                                  -->
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Ingredients Added: </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+
             <div>
-                <table class="table table-success"  id="addedIngTable" style="width:30%">
+                <table class="table table-success"  id="addedIngTable">
                     <tr>
                       <th>ID</th>
                       <th>Ingredient Name</th>
@@ -116,7 +166,21 @@
                     </tr>
                   </table>
             </div>
-            <a href="Cookbook.HTML" class="btn btn-outline-primary" type="button">Save New Recipe</a>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <a href="Cookbook.HTML" class="btn btn-outline-primary" type="button">Save New Recipe</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
