@@ -27,8 +27,33 @@
 
         <div class="container">
             <div class ="row justify-content-center">
-                <a href="Cookbook.HTML" class="btn btn-outline-primary" id="cookbookButton">Open Cookbook</a>
-                <a href="recipe.html" class="btn btn-outline-primary" id="recipeButton">Create New Recipe</a>
+                <table id="cookbookTable" class="table table-striped"  style="width:80%">
+                    <tr>
+                      <th>ID</th>
+                      <th>Cookbook Name</th>
+                      <th>Chef</th>
+                      <th>Notes</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                    </tr>
+                    <tr>
+                      <td>1</td>
+                      <td>Breakfast for Dinner</td>
+                      <td>Jaelyn</td>
+                      <td>ideas for breakfast for dinner</td>
+                      <td><a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="backToCookbookButton">Edit</a></td>
+                      <td><button class ="btn btn-outline-primary"> Delete</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>FOOB</td>
+                        <td>Christopher</td>
+                        <td>tasty foob only</td>
+                        <td><a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="backToCookbookButton">Edit</a></td>
+                        <td><button class ="btn btn-outline-primary"> Delete</button></td>
+                      </tr>
+                </table>
+                <a class="btn btn-outline-primary" id="cookbookButton">Add New Cookbook</a>
             </div>
         </div>
 

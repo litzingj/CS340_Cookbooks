@@ -10,7 +10,7 @@ CREATE TABLE `Recipes`
 (`recipe_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) UNIQUE NOT NULL, `instruction` VARCHAR(255) NOT NULL, `total_cook_time` INT NOT NULL, `genre` INT, PRIMARY KEY (`recipe_id`), FOREIGN KEY (`genre`) REFERENCES `Genres` (`g_id`));
 
 CREATE TABLE `Cookbooks`
-(`cookbook_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `book_name` VARCHAR(255) UNIQUE NOT NULL, `note` VARCHAR(255), PRIMARY KEY (`cookbook_id`));
+(`cookbook_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `book_name` VARCHAR(255) UNIQUE NOT NULL,`chef` VARCHAR(255), `note` VARCHAR(255), PRIMARY KEY (`cookbook_id`));
 
 --create intersection tables for many-to-many relationships--
 
@@ -41,7 +41,7 @@ INSERT INTO `Cookbooks` (book_name, note) VALUES
 INSERT INTO `Cookbooks_Recipes` (cookbook_id, recipe_id) VALUES (1, 1), (2, 2);
 
 --fill in garlic bread--
-INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (16, 2), (15, 2), (17, 2), (18, 2), (19, 2), (20, 2), (21, 2);
+INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (9, 2), (10, 2), (11, 2), (12, 2), (13, 2), (14, 2), (15, 2);
 
 --fill in crepes--
-INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (10, 1), (11, 1), (12, 1), (13, 1), (14, 1), (15, 1);
+INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (4, 1), (5, 1), (6, 1), (7, 1), (8, 1), (9, 1);
