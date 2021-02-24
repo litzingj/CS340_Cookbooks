@@ -10,9 +10,9 @@ webapp = Flask(__name__)
 def hello():
     return "Hello World!"
 
-@webapp.route('/browse_bsg_people')
+@webapp.route('/browse_genre')
 #the name of this function is just a cosmetic thing
-def browse_people():
+def browse_genre():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
     query = "SELECT fname, lname, homeworld, age, id from bsg_people;"
@@ -20,8 +20,39 @@ def browse_people():
     print(result)
     return render_template('people_browse.html', rows=result)
 
-@webapp.route('/add_new_people', methods=['POST','GET'])
-def add_new_people():
+@webapp.route('/add_new_genre', methods=['POST','GET'])
+def add_new_genre():
+    db_connection = connect_to_database()
+    if request.method == 'GET':
+        query = 'SELECT id, name from bsg_planets'
+        result = execute_query(db_connection, query).fetchall()
+        print(result)
+
+        return render_template('people_add_new.html', planets = result)
+    elif request.method == 'POST':
+        print("Add new people!")
+        fname = request.form['fname']
+        lname = request.form['lname']
+        age = request.form['age']
+        homeworld = request.form['homeworld']
+
+        query = 'INSERT INTO bsg_people (fname, lname, age, homeworld) VALUES (%s,%s,%s,%s)'
+        data = (fname, lname, age, homeworld)
+        execute_query(db_connection, query, data)
+        return ('Person added!')
+
+@webapp.route('/browse_ingredients')
+#the name of this function is just a cosmetic thing
+def browse_ingredients():
+    print("Fetching and rendering people web page")
+    db_connection = connect_to_database()
+    query = "SELECT fname, lname, homeworld, age, id from bsg_people;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('people_browse.html', rows=result)
+
+@webapp.route('/add_new_ingredients', methods=['POST','GET'])
+def add_new_ingredients():
     db_connection = connect_to_database()
     if request.method == 'GET':
         query = 'SELECT id, name from bsg_planets'
