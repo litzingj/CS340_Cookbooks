@@ -20,6 +20,19 @@ def browse_genre():
     print(result)
     return render_template('genre.html', g_rows=result)
 
+@webapp.route('/recipe')
+#the name of this function is just a cosmetic thing
+def recipe():
+    print("Fetching and rendering recipe web page")
+    db_connection = connect_to_database()
+    query = "SELECT name from Genres;"
+    genre_names = execute_query(db_connection, query).fetchall()
+    query = "SELECT ing_id, name, type FROM Ingredients"
+    ingredients = execute_query(db_connection, query).fetchall()
+    print(genre_names)
+    print(ingredients)
+    return render_template('recipe.html', g_rows=genre_names, i_rows=ingredients)
+
 @webapp.route('/add_new_genre', methods=['POST','GET'])
 def add_new_genre():
     db_connection = connect_to_database()
