@@ -82,7 +82,7 @@ def add_new_ingredients():
         query = 'INSERT INTO Ingredients (ing_id, name, type) VALUES (%s,%s,%s)'
         data = (ing_id, name, type)
         execute_query(db_connection, query, data)
-        return ('Person added!')
+        return ('Ingredient added!')
 
 @webapp.route('/')
 def index():
@@ -90,7 +90,7 @@ def index():
     db_connection = connect_to_database()
     query = "SELECT cookbook_id, book_name, chef, note from Cookbooks;"
     result = execute_query(db_connection, query).fetchall()
-    print(result) 
+    print(result)
     return render_template('index.html', c_rows=result)
 
 @webapp.route('/home')
