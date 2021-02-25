@@ -74,7 +74,12 @@ def add_new_ingredients():
 
 @webapp.route('/')
 def index():
-    return "<p>Are you looking for /db_test or /hello or <a href='/browse_bsg_people'>/browse_bsg_people</a> or /add_new_people or /update_people/id or /delete_people/id </p>"
+    print("Fetching and rendering cookbook web page")
+    db_connection = connect_to_database()
+    query = "SELECT cookbook_id, book_name, chef, note from Cookbooks;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result) 
+    return render_template('index.html', c_rows=result)
 
 @webapp.route('/home')
 def home():

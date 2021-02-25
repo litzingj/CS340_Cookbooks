@@ -36,22 +36,18 @@
                       <th>Edit</th>
                       <th>Delete</th>
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Breakfast for Dinner</td>
-                      <td>Jaelyn</td>
-                      <td>ideas for breakfast for dinner</td>
-                      <td><a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="backToCookbookButton">Edit</a></td>
-                      <td><button class ="btn btn-outline-primary"> Delete</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>FOOB</td>
-                        <td>Christopher</td>
-                        <td>tasty foob only</td>
-                        <td><a role="button" href="Cookbook.HTML" class="btn btn-outline-primary" id="backToCookbookButton">Edit</a></td>
+                    <tbody>
+                        {% for c in c_rows %}
+                        <tr>
+                        <td>{{ c.0 }}</td>
+                        <td>{{ c[1] }}</td>
+                        <td>{{ c[2] }}</td>
+                        <td>{{ c[3] }}</td>
+                        <td><button class ="btn btn-outline-primary"> Edit</button></td>
                         <td><button class ="btn btn-outline-primary"> Delete</button></td>
-                      </tr>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
                 <a class="btn btn-outline-primary" id="cookbookButton">Add New Cookbook</a>
             </div>
