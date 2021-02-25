@@ -15,10 +15,10 @@ def hello():
 def browse_genre():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
-    query = "SELECT fname, lname, homeworld, age, id from bsg_people;"
+    query = "SELECT g_id, name from Genres;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
-    return render_template('people_browse.html', rows=result)
+    return render_template('genre.html', g_rows=result)
 
 @webapp.route('/add_new_genre', methods=['POST','GET'])
 def add_new_genre():
@@ -73,18 +73,23 @@ def add_new_ingredients():
 
 @webapp.route('/')
 def index():
-    return "<p>Are you looking for /db_test or /hello or <a href='/browse_bsg_people'>/browse_bsg_people</a> or /add_new_people or /update_people/id or /delete_people/id </p>"
+    print("Fetching and rendering cookbook web page")
+    db_connection = connect_to_database()
+    query = "SELECT cookbook_id, book_name, chef, note from Cookbooks;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result) 
+    return render_template('index.html', c_rows=result)
 
 @webapp.route('/home')
 def home():
     db_connection = connect_to_database()
-    query = "DROP TABLE IF EXISTS diagnostic;"
-    execute_query(db_connection, query)
-    query = "CREATE TABLE diagnostic(id INT PRIMARY KEY, text VARCHAR(255) NOT NULL);"
-    execute_query(db_connection, query)
-    query = "INSERT INTO diagnostic (text) VALUES ('MySQL is working');"
-    execute_query(db_connection, query)
-    query = "SELECT * from diagnostic;"
+    #query = "DROP TABLE IF EXISTS diagnostic;"
+    #execute_query(db_connection, query)
+    #query = "CREATE TABLE `Genres` (`g_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) UNIQUE NOT NULL, PRIMARY KEY (`g_id`));"
+    #execute_query(db_connection, query)
+    #query = "INSERT INTO diagnostic (text) VALUES ('MySQL is working');"
+    #execute_query(db_connection, query)
+    query = "SELECT * from Genres;"
     result = execute_query(db_connection, query)
     for r in result:
         print(f"{r[0]}, {r[1]}")
