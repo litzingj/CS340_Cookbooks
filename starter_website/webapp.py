@@ -20,6 +20,16 @@ def browse_genre():
     print(result)
     return render_template('genre.html', g_rows=result)
 
+@webapp.route('/view_cookbook')
+#the name of this function is just a cosmetic thing
+def browse_cb():
+    print("Fetching and rendering cookbook web page")
+    db_connection = connect_to_database()
+    query = "SELECT recipe_id, name, instruction, total_cook_time, genre from Recipes;"
+    result = execute_query(db_connection, query).fetchall()
+    print(result)
+    return render_template('Cookbook.HTML', r_rows=result)
+
 @webapp.route('/recipe')
 #the name of this function is just a cosmetic thing
 def recipe():
@@ -62,7 +72,7 @@ def browse_ingredients():
     query = "SELECT ing_id, name, type from Ingredients;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
-    return render_template('ingredient.html', rows=result)
+    return render_template('ingredient.html', i_rows=result)
 
 @webapp.route('/ingredients', methods=['POST','GET'])
 def add_new_ingredients():
