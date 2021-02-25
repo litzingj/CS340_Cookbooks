@@ -41,34 +41,33 @@ def add_new_genre():
         execute_query(db_connection, query, data)
         return ('Person added!')
 
-@webapp.route('/browse_ingredients')
+@webapp.route('/ingredient')
 #the name of this function is just a cosmetic thing
 def browse_ingredients():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
-    query = "SELECT fname, lname, homeworld, age, id from bsg_people;"
+    query = "SELECT ing_id, name, type from Ingredients;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
-    return render_template('people_browse.html', rows=result)
+    return render_template('ingredient.html', rows=result)
 
-@webapp.route('/add_new_ingredients', methods=['POST','GET'])
+@webapp.route('/ingredients', methods=['POST','GET'])
 def add_new_ingredients():
     db_connection = connect_to_database()
     if request.method == 'GET':
-        query = 'SELECT id, name from bsg_planets'
+        query = 'SELECT id, name, type from Ingredients'
         result = execute_query(db_connection, query).fetchall()
         print(result)
 
-        return render_template('people_add_new.html', planets = result)
+        return render_template('ingredient.html', ingredient = result)
     elif request.method == 'POST':
-        print("Add new people!")
-        fname = request.form['fname']
-        lname = request.form['lname']
-        age = request.form['age']
-        homeworld = request.form['homeworld']
+        print("Add new ingredient!")
+        ing_id = request.form['ing_id']
+        name = request.form['name']
+        type = request.form['type']
 
-        query = 'INSERT INTO bsg_people (fname, lname, age, homeworld) VALUES (%s,%s,%s,%s)'
-        data = (fname, lname, age, homeworld)
+        query = 'INSERT INTO Ingredients (ing_id, name, type) VALUES (%s,%s,%s)'
+        data = (ing_id, name, type)
         execute_query(db_connection, query, data)
         return ('Person added!')
 
