@@ -20,6 +20,16 @@ def browse_genre():
     print(result)
     return render_template('genre.html', g_rows=result)
 
+@webapp.route('/edit_genre')
+#the name of this function is just a cosmetic thing
+def edit_genre():
+    print("Fetching and rendering people web page")
+    db_connection = connect_to_database()
+    #query = "SELECT g_id, name from Genres ORDER BY g_id ASC;"
+    #result = execute_query(db_connection, query).fetchall()
+    #print(result)
+    return render_template('edit_genre.html')
+
 @webapp.route('/view_cookbook')
 #the name of this function is just a cosmetic thing
 def browse_cb():
