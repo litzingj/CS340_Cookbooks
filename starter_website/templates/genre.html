@@ -50,12 +50,14 @@
                     <tr>
                         <td>{{ g.0 }}</td>
                         <td>{{ g[1] }}</td>
-                        <td><button class ="btn btn-outline-primary"> Edit</button></td>
+
+                        <a role="button" class="btn btn-outline-primary" id="editButton" onclick="window.location = '/edit_genre'">Edit</a>
+                        <!--<td><button class ="btn btn-outline-primary"> Edit</button></td>-->
                         <td><button class ="btn btn-outline-primary"> Delete</button></td>
                     </tr>
                     {% endfor %}
                 </tbody>
-                
+
               </table>
               <a role="button" class="btn btn-outline-primary" id="backToCookbookButton" onclick="window.location = '/view_cookbook'">Back to Cookbook</a>
 
