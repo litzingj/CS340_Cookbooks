@@ -15,7 +15,7 @@ def hello():
 def browse_genre():
     print("Fetching and rendering people web page")
     db_connection = connect_to_database()
-    query = "SELECT g_id, name from Genres;"
+    query = "SELECT g_id, name from Genres ORDER BY g_id ASC;"
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('genre.html', g_rows=result)
@@ -25,7 +25,7 @@ def browse_genre():
 def browse_cb():
     print("Fetching and rendering cookbook web page")
     db_connection = connect_to_database()
-    query = "SELECT recipe_id, name, instruction, total_cook_time, genre from Recipes;"
+    query = "SELECT recipe_id, name, instruction, total_cook_time, genre from Recipes;" #is just reading all recipes, not recipes in that cookbook, need to also read ingredients
     result = execute_query(db_connection, query).fetchall()
     print(result)
     return render_template('Cookbook.HTML', r_rows=result)
@@ -35,7 +35,7 @@ def browse_cb():
 def recipe():
     print("Fetching and rendering recipe web page")
     db_connection = connect_to_database()
-    query = "SELECT name from Genres;"
+    query = "SELECT name from Genres ORDER BY g_id ASC;"
     genre_names = execute_query(db_connection, query).fetchall()
     query = "SELECT ing_id, name, type FROM Ingredients"
     ingredients = execute_query(db_connection, query).fetchall()
@@ -47,22 +47,21 @@ def recipe():
 def add_new_genre():
     db_connection = connect_to_database()
     if request.method == 'GET':
-        query = 'SELECT id, name from bsg_planets'
+        print("Fetching and rendering people web page")
+        db_connection = connect_to_database()
+        query = "SELECT g_id, name from Genres ORDER BY g_id ASC;"
         result = execute_query(db_connection, query).fetchall()
         print(result)
+        return render_template('genre.html', g_rows=result)
 
-        return render_template('people_add_new.html', planets = result)
     elif request.method == 'POST':
-        print("Add new people!")
-        fname = request.form['fname']
-        lname = request.form['lname']
-        age = request.form['age']
-        homeworld = request.form['homeworld']
-
-        query = 'INSERT INTO bsg_people (fname, lname, age, homeworld) VALUES (%s,%s,%s,%s)'
-        data = (fname, lname, age, homeworld)
-        execute_query(db_connection, query, data)
-        return ('Person added!')
+        print("Add new genres!")
+        gname = request.form['gname']
+        query = 'INSERT INTO Genres (name) VALUES (\'' + gname + '\')'
+        execute_query(db_connection, query)
+        query = "SELECT g_id, name from Genres ORDER BY g_id ASC;"
+        result = execute_query(db_connection, query).fetchall()
+        return render_template('genre.html', g_rows=result)
 
 @webapp.route('/ingredient')
 #the name of this function is just a cosmetic thing
