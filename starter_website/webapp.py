@@ -20,15 +20,35 @@ def browse_genre():
     print(result)
     return render_template('genre.html', g_rows=result)
 
-@webapp.route('/edit_genre')
+@webapp.route('/edit_genre/<int:id>', methods=['POST', 'GET'])
 #the name of this function is just a cosmetic thing
-def edit_genre():
-    print("Fetching and rendering people web page")
+def edit_genre(id):
+    print('In the function')
     db_connection = connect_to_database()
-    #query = "SELECT g_id, name from Genres ORDER BY g_id ASC;"
-    #result = execute_query(db_connection, query).fetchall()
-    #print(result)
-    return render_template('edit_genre.html')
+    #display existing data
+    if request.method == 'GET':
+        print('The GET request')
+        query = 'SELECT g_id, name from Genres WHERE g_id = %s'  % (id)
+        result = execute_query(db_connection, query).fetchone()
+
+        if result == None:
+            return "No such person found!"
+
+        print('Returning')
+        return render_template('edit_genre.html', info = result)
+
+    elif request.method == 'POST':
+        print('The POST request')
+        gname = request.form['gname']
+
+        query = "UPDATE Genres SET name = %s WHERE g_id = %s"
+        data = (gname, id)
+        result = execute_query(db_connection, query, data)
+        print(str(result.rowcount) + " row(s) updated")
+
+        return redirect('/browse_genre')
+
+
 
 @webapp.route('/view_cookbook')
 #the name of this function is just a cosmetic thing

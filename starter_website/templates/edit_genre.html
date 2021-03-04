@@ -7,7 +7,7 @@
     <body>
         <div class="container">
             <div class="row justify-content-center">
-                <h2>Edit your Genre</h2>
+                <h2>Edit Genre: {{ info.0 }}, {{ info[1] }}</h2>
             </div>
             <div class="row justify-content-left">
                 <div>
@@ -23,12 +23,9 @@
         </div>
 
          <div class="justify-content-left">
-            <form id="addperson" action="/add_new_genre" method="post">
-                <input type="text" name="gname" stype="width:140px" placeholder="genre name...">
+            <form id="addperson" action="/edit_genre/{{ info.0 }}" method="post">
+                <input type="text" name="gname" stype="width:140px" value = "{{ info[1] }}" placeholder="genre name...">
                 <input type="submit" value="Submit the Edited Genre">
             </form>
-        </div>
-        <div>
-            <a role="button" class="btn btn-outline-primary" id="updateGenresButton" onclick="window.location = '/browse_genre'">Update Genres</a>
         </div>
     </body>
