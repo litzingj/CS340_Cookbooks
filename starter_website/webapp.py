@@ -107,21 +107,20 @@ def browse_ingredients():
 def add_new_ingredients():
     db_connection = connect_to_database()
     if request.method == 'GET':
-        query = 'SELECT id, name, type from Ingredients'
+        query = 'SELECT ing_id, name, type FROM Ingredients'
         result = execute_query(db_connection, query).fetchall()
         print(result)
+        return render_template('ingredient.html', i_rows = result)
 
-        return render_template('ingredient.html', ingredient = result)
     elif request.method == 'POST':
         print("Add new ingredient!")
-        ing_id = request.form['ing_id']
-        name = request.form['name']
-        type = request.form['type']
-
-        query = 'INSERT INTO Ingredients (ing_id, name, type) VALUES (%s,%s,%s)'
-        data = (ing_id, name, type)
+        ing_name = request.form['ing_name']
+        ing_type = request.form['type']
+        query = 'INSERT INTO Ingredients (name, type) VALUES (\'' + ing_name + ing_type + '\')'
         execute_query(db_connection, query, data)
-        return ('Ingredient added!')
+        query = "SELECT ing_id, name, type from Ingredients ORDER BY ing_id ASC;"
+        result = execute_query(db_connection, query).fetchall()
+        return render_template('ingredient.html, i_rows=result')
 
 
 
@@ -132,7 +131,7 @@ def edit_ingredient(id):
 #display existing data
         if request.method == 'GET':
             print('The GET request')
-            query = 'SELECT ing_id, name, tpe from Genres WHERE g_id = %s'  % (id)
+            query = 'SELECT ing_id, name, type from Ingredients WHERE ing_id = %s'  % (id)
             result = execute_query(db_connection, query).fetchone()
 
             if result == None:
@@ -144,12 +143,14 @@ def edit_ingredient(id):
         elif request.method == 'POST':
             print('The POST request')
             ing_name = request.form['ing_name']
-            type = request.form['type']
-            query = "UPDATE ingredients SET name = %s type = %s WHERE ing_id = %s"
-            data = (ing_name, type, id)
+            ing_type = request.form['type']
+            query = "UPDATE Ingredients SET name = %s, type = %s WHERE ing_id = %s"
+            data = (ing_name, ing_type, id)
             result = execute_query(db_connection, query, data)
             print(str(result.rowcount) + " row(s) updated")
             return redirect('/ingredient')
+
+
 @webapp.route('/')
 def index():
     print("Fetching and rendering cookbook web page")
