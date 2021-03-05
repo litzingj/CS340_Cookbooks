@@ -123,6 +123,33 @@ def add_new_ingredients():
         execute_query(db_connection, query, data)
         return ('Ingredient added!')
 
+
+
+@webapp.route('/edit_ingredient/<int:id>', methods=['POST', 'GET'])
+def edit_ingredient(id):
+        print('In the function')
+        db_connection = connect_to_database()
+#display existing data
+        if request.method == 'GET':
+            print('The GET request')
+            query = 'SELECT ing_id, name, tpe from Genres WHERE g_id = %s'  % (id)
+            result = execute_query(db_connection, query).fetchone()
+
+            if result == None:
+                return "No such person found!"
+
+            print('Returning')
+                return render_template('edit_ingredient.html', info = result)
+
+        elif request.method == 'POST':
+            print('The POST request')
+            ing_name = request.form['ing_name']
+            type = request.form['type']
+            query = "UPDATE ingredients SET name = %s type = %s WHERE ing_id = %s"
+            data = (ing_name, type, id)
+            result = execute_query(db_connection, query, data)
+            print(str(result.rowcount) + " row(s) updated")
+            return redirect('/ingredient')
 @webapp.route('/')
 def index():
     print("Fetching and rendering cookbook web page")
