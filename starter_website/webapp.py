@@ -116,11 +116,11 @@ def add_new_ingredients():
         print("Add new ingredient!")
         ing_name = request.form['ing_name']
         ing_type = request.form['type']
-        query = 'INSERT INTO Ingredients (name, type) VALUES (\'' + ing_name + ing_type + '\')'
-        execute_query(db_connection, query, data)
+        query = 'INSERT INTO Ingredients (name, type) VALUES (\'' + ing_name + '\', \'' + ing_type + '\')'
+        execute_query(db_connection, query)
         query = "SELECT ing_id, name, type from Ingredients ORDER BY ing_id ASC;"
         result = execute_query(db_connection, query).fetchall()
-        return render_template('ingredient.html, i_rows=result')
+        return render_template('ingredient.html', i_rows=result)
 
 
 
@@ -138,7 +138,7 @@ def edit_ingredient(id):
                 return "No such person found!"
 
             print('Returning')
-                return render_template('edit_ingredient.html', info = result)
+            return render_template('edit_ingredients.html', info = result)
 
         elif request.method == 'POST':
             print('The POST request')
