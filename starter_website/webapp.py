@@ -183,46 +183,15 @@ def test_database_connection():
     result = execute_query(db_connection, query)
     return render_template('db_test.html', rows=result)
 
-#display update form and process any updates, using the same function
-@webapp.route('/update_people/<int:id>', methods=['POST','GET'])
-def update_people(id):
-    print('In the function')
-    db_connection = connect_to_database()
-    #display existing data
-    if request.method == 'GET':
-        print('The GET request')
-        people_query = 'SELECT id, fname, lname, homeworld, age from bsg_people WHERE id = %s'  % (id)
-        people_result = execute_query(db_connection, people_query).fetchone()
 
-        if people_result == None:
-            return "No such person found!"
-
-        planets_query = 'SELECT id, name from bsg_planets'
-        planets_results = execute_query(db_connection, planets_query).fetchall()
-
-        print('Returning')
-        return render_template('people_update.html', planets = planets_results, person = people_result)
-    elif request.method == 'POST':
-        print('The POST request')
-        character_id = request.form['character_id']
-        fname = request.form['fname']
-        lname = request.form['lname']
-        age = request.form['age']
-        homeworld = request.form['homeworld']
-
-        query = "UPDATE bsg_people SET fname = %s, lname = %s, age = %s, homeworld = %s WHERE id = %s"
-        data = (fname, lname, age, homeworld, character_id)
-        result = execute_query(db_connection, query, data)
-        print(str(result.rowcount) + " row(s) updated")
-
-        return redirect('/browse_bsg_people')
-
-@webapp.route('/delete_people/<int:id>')
+@webapp.route('/delete_genre/<int:id>')
 def delete_people(id):
     '''deletes a person with the given id'''
     db_connection = connect_to_database()
-    query = "DELETE FROM bsg_people WHERE id = %s"
+    query = "DELETE FROM Genres WHERE g_id = %s"
     data = (id,)
 
     result = execute_query(db_connection, query, data)
-    return (str(result.rowcount) + "row deleted")
+    return redirect('/browse_genre')
+
+    
