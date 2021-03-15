@@ -55,8 +55,18 @@ def edit_genre(id):
 def browse_cb():
     print("Fetching and rendering cookbook web page")
     db_connection = connect_to_database()
-    query = "SELECT recipe_id, name, instruction, total_cook_time, genre from Recipes;" #is just reading all recipes, not recipes in that cookbook, need to also read ingredients
-    result = execute_query(db_connection, query).fetchall()
+    query = "SELECT recipe_id, name, instruction, total_cook_time, (SELECT name FROM Genres WHERE g_id=genre) from Recipes;" #is just reading all recipes, not recipes in that cookbook, need to also read ingredients
+    result = list(execute_query(db_connection, query).fetchall())
+    for i in range(0, len(result)):
+        rid = result[i][0]
+        result[i] = list(result[i])
+        print(rid)
+        ing_name_query = f"""SELECT Ingredients.name FROM Recipes JOIN Ingredients_Recipes ON Ingredients_Recipes.recipe_id=Recipes.recipe_id JOIN Ingredients ON Ingredients_Recipes.ing_id=Ingredients.ing_id WHERE Recipes.recipe_id={rid}"""
+        ings = list(execute_query(db_connection, ing_name_query).fetchall())
+        #ings = str(ings).strip('[]').strip('()')
+        print(ings)
+        print(result[i])
+        result[i].append(str(ings))    
     print(result)
     return render_template('Cookbook.HTML', r_rows=result)
 
