@@ -47,10 +47,10 @@ SET type = :type_input
 WHERE type = :type_input;
 
 
---WHen the user hits the add new cookbook button on the home screen (the button hasnt been added yet)
+--When the user hits the add new cookbook button on the home screen (the button hasnt been added yet)
 UPDATE `Cookbooks`
-SET book_name = :book_name_input
-WHERE book_name = :book_name_input;
+SET book_name = :book_name_input AND chef_name = :chef_name_input AND note_name = :note_name_input 
+WHERE book_name = :book_name_input AND chef_name = :chef_name_input AND note_name = :note_name_input;
 
 --DELETE
 --when the user hits the delete button on the genres page
