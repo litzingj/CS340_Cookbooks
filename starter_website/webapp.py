@@ -185,7 +185,7 @@ def test_database_connection():
 
 
 @webapp.route('/delete_genre/<int:id>')
-def delete_people(id):
+def delete_genre(id):
     '''deletes a person with the given id'''
     db_connection = connect_to_database()
     query = "DELETE FROM Genres WHERE g_id = %s"
@@ -194,4 +194,12 @@ def delete_people(id):
     result = execute_query(db_connection, query, data)
     return redirect('/browse_genre')
 
-    
+@webapp.route('/delete_ingredient/<int:id>')
+def delete_ingredients(id):
+    '''deletes a person with the given id'''
+    db_connection = connect_to_database()
+    query = "DELETE FROM Ingredients WHERE ing_id = %s"
+    data = (id,)
+
+    result = execute_query(db_connection, query, data)
+    return redirect('/ingredient')    

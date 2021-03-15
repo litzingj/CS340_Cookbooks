@@ -1,5 +1,3 @@
-
-
 CREATE TABLE `Ingredients` 
 (`ing_id` INT NOT NULL AUTO_INCREMENT UNIQUE, `name` VARCHAR(255) NOT NULL UNIQUE, `type` VARCHAR(255) NOT NULL, PRIMARY KEY (`ing_id`));
 
@@ -10,8 +8,7 @@ CREATE TABLE `Recipes`
 (`recipe_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `name` VARCHAR(255) UNIQUE NOT NULL, `instruction` VARCHAR(255) NOT NULL, `total_cook_time` INT NOT NULL, `genre` INT, PRIMARY KEY (`recipe_id`), FOREIGN KEY (`genre`) REFERENCES `Genres` (`g_id`));
 
 CREATE TABLE `Cookbooks`
-(`cookbook_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `book_name` VARCHAR(255) UNIQUE NOT NULL, `note` VARCHAR(255), PRIMARY KEY (`cookbook_id`));
-
+(`cookbook_id` INT UNIQUE NOT NULL AUTO_INCREMENT, `book_name` VARCHAR(255) UNIQUE NOT NULL,`chef` VARCHAR(255), `note` VARCHAR(255), PRIMARY KEY (`cookbook_id`));
 
 CREATE TABLE `Ingredients_Recipes` 
 (`ing_id` INT NOT NULL, `recipe_id` INT NOT NULL, 
@@ -20,8 +17,6 @@ PRIMARY KEY (ing_id, recipe_id), FOREIGN KEY (ing_id) REFERENCES `Ingredients` (
 CREATE TABLE `Cookbooks_Recipes` 
 (`cookbook_id` INT NOT NULL, `recipe_id` INT NOT NULL,
 PRIMARY KEY (cookbook_id, recipe_id), FOREIGN KEY (cookbook_id) REFERENCES `Cookbooks` (cookbook_id), FOREIGN KEY (recipe_id) REFERENCES `Recipes` (recipe_id));
-
-
 
 INSERT INTO `Ingredients` (name, type) VALUES ('Onion', 'Vegetable'), ('Potato', 'Vegetable'), ('Apples', 'Fruit'), ('Milk', 'Dairy'), ('Flour', 'Grain'), ('Egg', 'Protein'), ('Water', 'Liquid'), ('Salt', 'Seasoning'), ('Butter', 'Dairy'),
 ('French Bread', 'Carb'), ('Garlic', 'Vegetable'), ('Parsley', 'Seasoning'), ('Parmesan Cheese', 'Dairy'), ('Oregano', 'Seasoning'), ('Basil', 'Seasoning');
@@ -36,11 +31,8 @@ INSERT INTO `Cookbooks` (book_name, note) VALUES
 ('Breakfast for Dinner', 'ideas for breakfast for dinner'),
 ('FOOB', 'only tasty foob here');
 
-
 INSERT INTO `Cookbooks_Recipes` (cookbook_id, recipe_id) VALUES (1, 1), (2, 2);
 
-
 INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (9, 2), (10, 2), (11, 2), (12, 2), (13, 2), (14, 2), (15, 2);
-
 
 INSERT INTO `Ingredients_Recipes` (ing_id, recipe_id) VALUES (4, 1), (5, 1), (6, 1), (7, 1), (8, 1), (9, 1);
